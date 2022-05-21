@@ -10,11 +10,10 @@ namespace Code
         [SerializeField] private FloatRange _spawnRate;
         
         [SerializeField] private float _meteoriteSpeed; // это тоже не должно быть тут))  
+        [SerializeField] private float _radius;
         [SerializeField] private int _damage; // и это)
-
+        
         private RandomLoopTimer _timer;
-
-        private float _radius = 5f;
 
         private void Awake()
         {
