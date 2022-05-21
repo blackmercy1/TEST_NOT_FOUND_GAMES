@@ -7,6 +7,7 @@ namespace Code
     {
         private readonly AnimationCurve _curve;
         private readonly IValue<float> _deltaTime;
+        
         private float _progress;
 
         public CurveDeltaPosition(AnimationCurve curve, IValue<float> deltaTime)

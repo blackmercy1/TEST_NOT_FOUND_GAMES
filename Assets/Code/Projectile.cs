@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Code
 {
-    public class Projectile : MonoBehaviour
+    public class Projectile : MonoBehaviour, IDamageable
     {
         private IDeltaPosition _deltaPosition;
 
@@ -14,6 +14,11 @@ namespace Code
         private void Update()
         {
             transform.position += _deltaPosition.Evaluate();
+        }
+
+        public void TakeDamage(int damage)
+        {
+            
         }
     }
 }

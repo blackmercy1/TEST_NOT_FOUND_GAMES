@@ -5,10 +5,3 @@ namespace Code
         
     }
 }
-
-public class Meteorit
-{
-    
-}
-
-public interface IDamagable

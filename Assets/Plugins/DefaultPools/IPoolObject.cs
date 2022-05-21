@@ -1,4 +1,4 @@
-﻿namespace Pools.DefaultPools
+﻿namespace Plugins.DefaultPools
 {
     public interface IPoolObject
     {

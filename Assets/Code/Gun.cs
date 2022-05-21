@@ -3,20 +3,26 @@ using UnityEngine;
 
 namespace Code
 {
-    public class Gun : MonoBehaviour
+    public class Gun : MonoBehaviour, IDamageable
     {
         [SerializeField] private AnimationCurve _curve;
         [SerializeField] private Projectile _projectilePrefab;
         [SerializeField] private Camera _camera;
+        
         [SerializeField] private float _fireForce;
-
+        [SerializeField] private int _healthPoints = 10;
+        [SerializeField] private GameObject _gameOverView; //так нельзя если что деоаить
+        
         private IKey _fireKey;
+        private Health _health;
 
         private void Awake()
         {
             _fireKey = new KeyDown(KeyCode.Mouse0);
+            _health = new Health(_healthPoints);
+            _health.Died += OnGunDied;
         }
-
+        
         private void Update()
         {
             if (_fireKey.HasInput())
@@ -44,6 +50,17 @@ namespace Code
                             new FluidMultiplyDeltaPosition(new ConstantDeltaPosition(result), new UnityDeltaTime()),
                             _fireForce)
                     }));
+        }
+        
+        public void TakeDamage(int damage)
+        {
+            _health.TakeDamage(damage);
+        }
+        
+        private void OnGunDied()
+        {
+            _gameOverView.SetActive(true);
+            Time.timeScale = 0f;// так тоже нельзя
         }
     }
 }

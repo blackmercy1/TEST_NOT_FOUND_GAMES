@@ -5,12 +5,11 @@ namespace Code
 {
     public class FluidMultiplyDeltaPosition : DeltaPositionDecorator
     {
-        private IValue<float> _factor;
+        private readonly IValue<float> _factor;
 
         public FluidMultiplyDeltaPosition(IDeltaPosition childDeltaPosition, IValue<float> factor) : base(childDeltaPosition)
         {
             _factor = factor;
-
         }
 
         public override Vector3 Evaluate()
